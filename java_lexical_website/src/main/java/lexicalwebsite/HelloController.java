@@ -1,4 +1,4 @@
-package funwithelastic;
+package lexicalwebsite;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
