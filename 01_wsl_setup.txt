@@ -1,0 +1,96 @@
+created C:\Users\outla\.wslconfig, containing:
+
+[wsl2]
+networkingMode=mirrored
+memory=16GB
+processors=2
+swap=4GB
+
+wsl --install Ubuntu-24.04
+(created instance on c: drive)
+
+wsl
+(to run instance and "log in" to it)
+
+sudo apt-get update
+sudo apt-get upgrade
+(to patch)
+
+wsl --shutdown
+
+wsl -l -v
+(verify it exists and was not running)
+
+wsl --export Ubuntu-24.04 d:\temp\backup1.tar
+(to created backup copy)
+
+mkdir m:\Coding\MyUbuntu
+(make sure new spot to run image exists)
+
+wsl --import MyUbuntu m:\Coding\MyUbuntu d:\temp\backup1.tar
+(imports backup, running on m: drive)
+
+wsl -l -v
+(verify new instance exists)
+
+dir m:\Coding\MyUbuntu\*
+(to see files)
+
+wsl --unregister Ubuntu-24.04
+(to remove original, which was on c: drive)
+
+wsl
+(to run new image)
+
+in the linux instance:
+
+sudo vi /etc/wsl.conf
+
+add if necessary:
+
+[boot]
+systemd=true
+
+this enables systemd; exit linux
+
+restart wsl:
+    wsl --shutdown
+    wsl
+
+now back in linux:
+
+ps -p 1 -o comm=
+(verifiy systemd is running)
+
+sudo apt-get update
+
+sudo apt-get upgrade
+
+sudo apt install xfce4 xfce4-terminal
+
+sudo apt install net-tools
+(installs ifconfig amongst other things)
+
+xfce4-terminal
+(launches terminal, just doing this as a test)
+
+back to wsl commands:
+
+wsl --shutdown
+
+wsl --export MyUbuntu d:\temp\backup2.tar
+(back up progress)
+
+wsl
+
+back to linux commands, to install Apache HTTP server and validate we can access outside the VM:
+
+sudo apt install apache2
+
+sudo service apache2 start
+
+sudo service apache2 status
+
+curl http://localhost
+
+can access this http server on windows, but only using http://localhost, not the IP address

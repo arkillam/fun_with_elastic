@@ -1,0 +1,20 @@
+
+apt-get install zstd
+(was required, below step will prompt you otherwise)
+
+curl -fsSL https://ollama.com/install.sh | sh
+
+sudo systemctl enable ollama
+
+sudo systemctl start ollama
+
+ollama run qwen2.5:3b
+(to test)
+
+ollama pull nomic-embed-text
+(pull a good model for embedding)
+
+saving work so far again:
+wsl --shutdown
+wsl --export MyUbuntu d:\temp\backup5.tar
+

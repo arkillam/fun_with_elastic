@@ -1,0 +1,23 @@
+wget https://artifacts.elastic.co/downloads/kibana/kibana-8.13.0-amd64.deb
+
+sudo dpkg -i kibana-8.13.0-amd64.deb
+
+sudo vi /etc/kibana/kibana.yml
+set:
+    server.host: "0.0.0.0"
+    elasticsearch.hosts: ["http://localhost:9200"]
+
+sudo systemctl start kibana
+
+http://localhost:5601
+
+to see the test data added above:
+ - click "discover" in menu
+ - "create a data view"
+ - index pattern "test-index"
+ - skip time stamp
+ - done
+
+saving work so far again:
+wsl --shutdown
+wsl --export MyUbuntu d:\temp\backup4.tar

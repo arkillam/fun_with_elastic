@@ -1,0 +1,58 @@
+starting to install elastic:
+
+sudo apt install curl gnupg apt-transport-https -y
+
+sudo apt install apt-transport-https openjdk-17-jdk wget -y
+
+curl -fsSL https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg
+(import the GPG Key)
+
+echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list
+(add the repository)
+
+sudo apt-get update
+
+sudo apt install elasticsearch
+
+sudo systemctl daemon-reexec
+
+sudo systemctl enable elasticsearch
+
+sudo systemctl start elasticsearch
+
+I spent a fair bit of time trying to configure security, then gave up - apparently wsl makes this difficult, and I just want a dev environment
+
+vi /etc/elasticsearch/elasticsearch.yml
+    xpack.security.enabled: false
+    xpack.security.enrollment.enabled: false
+    network.host: 0.0.0.0
+    http.port: 9200
+
+sudo systemctl restart elasticsearch
+
+ran this to get password reset:
+sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -u elastic
+
+curl -u elastic:<password> http://localhost:9200
+(returns JSON from elastic server)
+
+accessing from windows via IP still does not work, but
+http://localhost:9200/ does
+
+saving work so far again:
+wsl --shutdown
+wsl --export MyUbuntu d:\temp\backup3.tar
+
+test elastic:
+
+curl http://localhost:9200
+
+curl http://localhost:9200/_cat/indices?v
+
+Create and query test data:
+
+curl -X PUT localhost:9200/test-index
+
+curl -X POST localhost:9200/test-index/_doc -H "Content-Type: application/json" -d '{ "name": "test", "value": 123 }'
+
+curl localhost:9200/test-index/_search?pretty
