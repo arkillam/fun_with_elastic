@@ -1,0 +1,66 @@
+package funwithelastic;
+
+import java.io.IOException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+/**
+ * Creates an index in Elastic called lex_text_files with a mapping that has two
+ * fields: filename and content. The index is optimized for English content.
+ * 
+ * The first time you run this, it will create the index. If you run it again,
+ * it will return an error.
+ */
+
+public class CreateIndex {
+
+    public static final String INDEX_NAME = "lex_text_files";
+    public static void main(String[] args) {
+
+        // sent to elastic to define the index
+        String indexMapping = """
+                {
+                  "settings": {
+                    "analysis": {
+                      "analyzer": {
+                        "default": {
+                          "type": "english"
+                        }
+                      }
+                    }
+                  },
+                  "mappings": {
+                    "properties": {
+                      "filename": { "type": "keyword" },
+                      "content":  { "type": "text",
+                        "analyzer": "english"}
+                    }
+                  }
+                }'
+                """;
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(java.net.URI.create(INDEX_NAME))
+                .header("Content-Type", "application/json")
+                .PUT(HttpRequest.BodyPublishers.ofString(indexMapping))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            System.out.println("Response status code: " + response.statusCode());
+            System.out.println("Response body: " + response.body());
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+
+        System.out.println("Index created.");
+        System.exit(0);
+    }
+
+}

@@ -7,6 +7,8 @@ set:
     server.host: "0.0.0.0"
     elasticsearch.hosts: ["http://localhost:9200"]
 
+sudo systemctl enable kibana
+
 sudo systemctl start kibana
 
 http://localhost:5601
