@@ -13,7 +13,9 @@ I needed some content to search, and selected publicly available Sherlock Holmes
 
 Setup instructions are listed in the numbered files.
 
-After I finished the setup, I wrote the "java_uploader" Java project and its classes to create an index for lexical search, and upload the Sherlock Holmes short stories files in the documents folder.  I made a naming mistake and created an index with a name I did not want, so I then created classes to list indices and one to delete an unwanted one.
+After I finished the setup, I wrote the "java_uploader" Java project and its classes to create an index for lexical search, and upload the Sherlock Holmes short stories files in the documents folder.  I made a naming mistake and created an index with a name I did not want, so I then created classes to list indices and one to delete an unwanted one.  There is also a searching class to round out the set.
 
 Some useful links:
+ - http://localhost:9200/_aliases (list of elastic indices)
+ - http://localhost:9200/lex_text_files/_search?q=scandal (simple search)
  - http://localhost:5601/app/home#/ (Kibana)
