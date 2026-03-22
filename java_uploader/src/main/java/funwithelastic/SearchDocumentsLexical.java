@@ -10,7 +10,8 @@ import org.json.JSONObject;
 /**
  * Searches Elasticsearch for documents by a configured query string.
  * 
- * Awkwardly named to differentiate it from the similar class that searches the semantic index.
+ * Awkwardly named to differentiate it from the similar class that searches the
+ * semantic index.
  */
 public class SearchDocumentsLexical {
 
