@@ -5,7 +5,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import org.json.JSONObject;
-import org.json.JSONException;
 
 /**
  * Queries elastic at localhost:9200 to retrieve and display the list of
