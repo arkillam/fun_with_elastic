@@ -11,9 +11,11 @@ import java.net.http.HttpResponse;
  * 
  * The first time you run this, it will create the index. If you run it again,
  * it will return an error.
+ * 
+ * The created index is meant for documents that will be searched lexically.
  */
 
-public class CreateIndex {
+public class CreateLexicalIndex {
 
   public static final String INDEX_NAME = "lex_text_files";
 

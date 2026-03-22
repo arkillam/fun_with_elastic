@@ -17,10 +17,17 @@ import org.json.JSONObject;
  * from the ../documents directory and sends each file as a JSON document to the
  * elastic endpoint localhost:9200/text_files/_doc.
  * 
- * Generates a SHA-256 hash of the file content to use as the document ID in elastic. This ensures that if you run the uploader multiple times with the same files, it will update the same documents in elastic rather than creating duplicates. If the content of a file changes, it will generate a new document ID and create a new document in elastic.
+ * Generates a SHA-256 hash of the file content to use as the document ID in
+ * elastic. This ensures that if you run the uploader multiple times with the
+ * same files, it will update the same documents in elastic rather than creating
+ * duplicates. If the content of a file changes, it will generate a new document
+ * ID and create a new document in elastic.
+ * 
+ * This class is awkwardly named to differentiate it from the similar class that
+ * uploads documents for the semantic index.
  */
 
-public class UploadDocuments {
+public class UploadDocumentsLexical {
 
     private static final String documentsPath = "documents";
 
@@ -71,10 +78,11 @@ public class UploadDocuments {
                 jsonDoc.put("filename", filename);
                 jsonDoc.put("content", content);
 
-                // Use deterministic SHA-256 as id so re-uploading same content updates same document.
+                // Use deterministic SHA-256 as id so re-uploading same content updates same
+                // document.
                 HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create(elasticUrl + "/" + documentId))
-                    .PUT(HttpRequest.BodyPublishers.ofString(jsonDoc.toString()))
+                        .uri(URI.create(elasticUrl + "/" + documentId))
+                        .PUT(HttpRequest.BodyPublishers.ofString(jsonDoc.toString()))
                         .header("Content-Type", "application/json")
                         .build();
 

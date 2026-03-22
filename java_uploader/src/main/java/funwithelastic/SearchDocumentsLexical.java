@@ -9,8 +9,10 @@ import org.json.JSONObject;
 
 /**
  * Searches Elasticsearch for documents by a configured query string.
+ * 
+ * Awkwardly named to differentiate it from the similar class that searches the semantic index.
  */
-public class SearchDocuments {
+public class SearchDocumentsLexical {
 
     private static final String ELASTIC_SEARCH_URL = "http://localhost:9200/lex_text_files/_search";
 
