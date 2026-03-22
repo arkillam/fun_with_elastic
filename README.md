@@ -9,7 +9,7 @@ I am using WSL to run Ubuntu Linux under Windows 11.  It works great.  I am not 
 
 I have no worries about someone hacking into my computer and stealing the public domain Sherlock Holmes stories I am using as content, so to make life easier I am disabling security features as I go.  This project may be of value to someone learning how to use WSL, Elastic, Ollama, small LLMs (SLMs), and lexical and semantic search techniques, but please do not take any queues from this project on how to securely configure anything.  Security is important, but not for this project.
 
-I needed some content to search, and selected Sherlock Holmes short stories that are in the public domain.
+I needed some content to search, and selected Sherlock Holmes short stories that are in the public domain.  I wanted to see how Elastic and the two search types would handle larger documents, so I also uploaded my favourite full-length novels The Hound of the Baskervilles and The Sign of the Four.
 
 Setup instructions are listed in the numbered files.
 
@@ -24,10 +24,6 @@ Some useful links:
  - http://localhost:9200/lex_text_files/_search?q=scandal (simple search)
  - http://localhost:5601/app/home#/ (Kibana)
  - http://localhost:8080/ (whichever Java Spring Boot web site you are running)
-
-Todo:
- - semantic search Java class
- - semantic search website
 
 Future:
  - agentic setup that offers lexical and semantic search functionality
