@@ -1,5 +1,5 @@
 
-I am working on a project to build two small search engines:  a lexical one and a semantic one.  I am using all free software and running it all locally on my desktop.  My desktop is an AMD 5600GT with 64 GB of RAM, Windows 11, and no meaningful GPU.
+For this project I built two small search engines:  a lexical one and a semantic one.  I am using all free software and running it all locally on my desktop.  My desktop is an AMD 5600GT with 64 GB of RAM, Windows 11, and no meaningful GPU.
 
 A word on storage:  I have a SATA SDD c: drive that I try to keep clear, a d: SATA HDD drive for large storage, and an m: M.2 SDD drive that I use for high performance storage.  You will see in my wsl setup instructions that I shifted the Ubuntu image from c: to m:, and keep incremental backups of my work on d:.
 
@@ -21,12 +21,22 @@ The "java_semantic_website" folder contains a Java Spring Boot application that 
 
 There are some screen shots in the screen_shots folder.
 
+To run all of this stuff, start wsl running with the Ubuntu image, and then start up either of the Java web projects.  Note that I have them both listening on port 8080, so you cannot run them on the same computer simultaneously.
+
 Some useful links:
  - http://localhost:9200/_aliases (list of elastic indices)
  - http://localhost:9200/lex_text_files/_search?q=scandal (simple search)
  - http://localhost:5601/app/home#/ (Kibana)
  - http://localhost:8080/ (whichever Java Spring Boot web site you are running)
 
-Future:
- - agentic setup that offers lexical and semantic search functionality
- - chat that uses said agent
+---------------------------------------------------------------------------------------
+
+I thought it would be fun, and easy, to use Copilot to generate a Python MCP server (python_mcp_server) and a command-line chat (python_chat) that use Ollama and the qwen2.5:3b model to provide a chat interface.  It *was* easy, but the result is not great (or fun to use), and so is a work-in-progress waiting for a future weekend to polish up.
+
+The model is only allowed to use the provided tools, and therefore the provided content.  The search systems I built first are responsive and I am happy with them.  By comparison, this chat system is slow, and so far not very good.  It was able to deduce that Dr. Watson is Sherlock Holmes' best friend, but could not tell me how many of the stories involve murder, even when I said to use a lexical search to figure it out.  So I have work to do if I am going to make this MCP server and chat business usable.
+
+I will probably end up deleting this two Python folders and starting over, but they do work if anyone is interested.  To use them, run three things:
+a) the wsl setup
+b) server.py in python_mcp_server
+c) chat.py in python_chat
+
