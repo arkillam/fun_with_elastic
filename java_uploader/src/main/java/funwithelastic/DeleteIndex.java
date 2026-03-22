@@ -11,7 +11,7 @@ import java.net.http.HttpResponse;
 
 public class DeleteIndex {
 
-    private static final String INDEX_NAME = "sem_text_files";
+    private static final String INDEX_NAME = "lex_text_files";
 
     private static final String ELASTICSEARCH_URL = "http://localhost:9200";
 

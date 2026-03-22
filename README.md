@@ -19,6 +19,8 @@ The "java_lexical_website" folder contains a Java Spring Boot application that s
 
 The "java_semantic_website" folder contains a Java Spring Boot application that serves up a search website.  Users can search the documents for text, see results with highlighted matches, and click on them to read the full stories.  Searches are semantic and return matched chunks.  Clicking on a match uses the lexical search to pull up the complete story.  Simple searches, usually one word, still get highlihghted in the final result, but more nuanced searches (e.g. "stores involving blackmail") do not.
 
+There are some screen shots in the screen_shots folder.
+
 Some useful links:
  - http://localhost:9200/_aliases (list of elastic indices)
  - http://localhost:9200/lex_text_files/_search?q=scandal (simple search)
