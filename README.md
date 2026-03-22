@@ -22,3 +22,11 @@ Some useful links:
  - http://localhost:9200/lex_text_files/_search?q=scandal (simple search)
  - http://localhost:5601/app/home#/ (Kibana)
  - http://localhost:8080/ (whichever Java Spring Boot web site you are running)
+
+Todo:
+ - semantic search Java class
+ - semantic search website
+
+Future:
+ - agentic setup that offers lexical and semantic search functionality
+ - chat that uses said agent
